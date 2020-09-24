@@ -1,0 +1,34 @@
+<ion-split-pane contentId="mainMenu" when="md">
+  <ion-menu side="start" menuId="mainMenu" type="overlay">
+    <ion-header class="style-header">
+      <ion-toolbar color="primary" class="style-toolbar">
+        <ion-title>{{ getTitle() }}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content padding class="style-content">
+      <ion-list lines="none">
+        <ion-item class="style-item" (click)="homeClick()">
+          <ion-icon name="arrow-dropleft-circle" slot="start"></ion-icon>{{ lblHome }}
+        </ion-item>
+        <ion-item class="style-item" [disabled]="isDisabledProfile()" (click)="profilesClick()">
+          <ion-icon name="contact" slot="start"></ion-icon>{{ lblProfiles }}
+        </ion-item>
+        <ion-item class="style-item" [disabled]="isDisabledEquipments()" (click)="equipmantsClick()">
+          <ion-icon name="construct" slot="start"></ion-icon>{{ lblEquipments }}
+        </ion-item>
+        <ion-item class="style-item" [disabled]="isDisabledWorkers()" (click)="workersClick()">
+          <ion-icon name="contacts" slot="start"></ion-icon>{{ lblWorkers }}
+        </ion-item>
+        <ion-item class="style-item" [disabled]="isDisableContractors()" (click)="contractorsClick()">
+          <ion-icon name="home" slot="start"></ion-icon>{{ lblContractor }}
+        </ion-item>
+        <ion-item class="style-item" (click)="logoutClick()">
+          <ion-icon name="log-out" slot="start"></ion-icon>{{ lblLogout }}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet main id="mainMenu"></ion-router-outlet>
+</ion-split-pane>
+  
+  

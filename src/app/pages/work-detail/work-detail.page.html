@@ -1,0 +1,102 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary" class="style-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/work-list"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Diário da obra</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="showSettings(work)">
+        <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-title>
+      <h1>{{ work.description }}</h1>{{ work.address }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="checkbox-class" *ngIf="canShowWorkerlOfWork">
+      <div class="into-class">
+        <app-worker [result]="team" [isCheckable]="true"></app-worker>
+        <ion-grid>
+          <ion-row justify-content-around >
+            <ion-button center style="width:40%" (click)="saveWorkersOfWork(work.id)">Adicionar</ion-button>
+            <ion-button center style="width:40%" (click)="cancelWorkersOfWork()">Cancelar</ion-button>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <div class="checkbox-class" *ngIf="canShowEquipmentslOfWork">
+      <div class="into-class">
+        <app-equipment [result]="equipments" [isCheckable]="true"></app-equipment>
+        <ion-grid>
+          <ion-row justify-content-around>
+            <ion-button (click)="saveEquipmentsOfWork(work.id)">Adicionar</ion-button>
+            <ion-button (click)="cancelEquipmentsOfWork()">Cancelar</ion-button>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+
+  <ion-list *ngFor="let daily of dailyCollection">
+    <ion-item *ngIf="daily">
+      <ion-label class="ion-text-wrap">
+        <b>Data: </b> {{ daily.date.toDate() |  date: 'dd/MM/yyyy' }}
+        <br>
+        <b>Descrição: </b>{{ daily.description }}
+        <br>
+        <div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="images" style="zoom:2.0;" (click)="showPhoto(daily.id)"
+                  [hidden]="!daily.urlPhotos.length > 0"></ion-icon>
+                <ion-icon name="construct" style="zoom:2.0;" (click)="showEquipments(daily.id)"
+                  [hidden]="!daily.equipments.length > 0">
+                </ion-icon>
+                <ion-icon name="contacts" style="zoom:2.0;" (click)="showTeam(daily.id)"
+                  [hidden]="!daily.team.length > 0"></ion-icon>
+              </ion-col>
+              <ion-col style="text-align:end">
+                <ion-icon name="trash" style="zoom:2.0; color: red;" (click)="deleteDaily(work.id, daily)">
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <!-- Fotos -->
+          <ion-slides class="checkbox-class" pager="true" *ngIf="canShowPhoto && showId == daily.id">
+            <ion-slide *ngFor="let photo of daily.urlPhotos; let i = index">
+              <div>
+                <ion-badge color="primary">{{i+1}}/{{daily.urlPhotos.length}}</ion-badge>
+                <img [src]="photo">
+              </div>
+            </ion-slide>
+          </ion-slides>
+
+          <!-- Equipamentos -->
+          <ion-list class="checkbox-class" *ngIf="canShowEquipment && showId == daily.id">
+            <app-equipment [isCheckable]="false" [workRef]="work.id" [dailyRef]="daily.id">
+            </app-equipment>
+          </ion-list>
+
+          <!-- Time -->
+          <ion-list class="checkbox-class" *ngIf="canShowTeam && showId == daily.id">
+            <app-worker [isCheckable]="false" [workRef]="work.id" [dailyRef]="daily.id">
+            </app-worker>
+          </ion-list>
+        </div>
+
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <div *ngIf="dailyCollection?.length === 0">
+    <span alin>Não há diario registrado!</span>
+  </div>
+</ion-content>

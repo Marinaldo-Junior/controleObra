@@ -1,0 +1,5 @@
+<div class="w-component" *ngFor="let worker of workers; let i=index">
+  <ion-checkbox *ngIf="isCheckable" slot="start" id="i" 
+                (ionChange)="onChange(worker, $event.target.checked)"></ion-checkbox>
+  <ion-label>{{worker.name}} ({{worker.profile.description}})</ion-label>
+</div>

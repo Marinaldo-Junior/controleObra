@@ -1,0 +1,21 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-title>Obra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="style-content" padding>
+  <h4>{{action}}</h4>
+  <div class="ion-padding">
+    <ion-item class="style-item" lines="none">
+      <ion-input type="text" placeholder="Nome da obra" [(ngModel)]="work.description"></ion-input>
+    </ion-item>
+    <ion-item class="style-item" lines="none">
+      <ion-input type="text" placeholder="Endereço" [(ngModel)]="work.address"></ion-input>
+    </ion-item>
+    <div class="controls-button">
+      <ion-button style="width:40%" (click)="save()" color="primary" >Salvar</ion-button>
+      <ion-button style="width:40%" (click)="cancel()" fill="outline">Cancelar</ion-button>
+    </div>
+  </div>
+</ion-content>

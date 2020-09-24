@@ -1,0 +1,8 @@
+{
+  "name": "controle-obra",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "telemetry": false
+}

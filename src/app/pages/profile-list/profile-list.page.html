@@ -1,0 +1,32 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-title>Perfil - Listagem</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addProfile()" routerDirection="forward">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="style-content" padding>
+  <ion-list class="style-list" padding>
+    <ion-item-sliding *ngFor="let profile of profileCollection">
+      <ion-item class="style-item">
+        {{profile.description}}
+      </ion-item>
+      <ion-item-options side="end">
+        <button class="button-edit" ion-button expandable [routerLink]="['/profile', profile]">
+          <ion-icon name="md-create">Editar</ion-icon>
+        </button>
+        <button class="button-delete" ion-button color="danger" (click)="deleteProfile(profile)">
+          <ion-icon name="trash">Delete</ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

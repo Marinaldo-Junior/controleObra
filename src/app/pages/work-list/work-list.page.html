@@ -1,0 +1,33 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary" class="style-toolbar">
+    <ion-title>Obras</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addWork()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content class="style-content" padding>
+      <h4 class="ion-margin-bottom">Lista de obras</h4>
+    <ion-item-sliding *ngFor="let work of workCollection">
+      <ion-item [routerLink]="['/work-detail', work]" class="style-item">
+         {{ work.description }} <br> ({{ work.address }})
+      </ion-item>
+      <ion-item-options side="end">
+        <button class="button-edit" ion-button expandable [routerLink]="['/work', work]">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button class="button-delete" ion-button color="danger" (click)="deleteWork(work)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-content>
+
+  

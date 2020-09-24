@@ -1,0 +1,33 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/worker" routerDirection="forward">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>   
+    <ion-title>Trabalhadores</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="style-content">
+  <ion-list padding class="style-list">
+    <h4 class="ion-margin-bottom">Lista de Trabalhadores</h4>
+    <ion-item-sliding *ngFor="let worker of workerCollection">
+      <ion-item class="style-item">
+        {{worker.name}} - {{worker.profile.description}}
+      </ion-item>
+      <ion-item-options side="end">
+        <button  class="button-edit" ion-button expandable (click)="editWorker(worker)" [routerLink]="['/worker', worker]">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button  class="button-delete" ion-button expandable (click)="deleteWorker(worker)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

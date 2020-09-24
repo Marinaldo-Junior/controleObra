@@ -1,0 +1,43 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-button (click)="comeback()">
+          <ion-icon slot="icon-only" name="md-arrow-round-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    <ion-title>Equipamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="primary-font">
+
+  <form padding [formGroup]="form" novalidate>
+    <ion-item class="style-item">
+      <ion-label position="floating">Descrição<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="description" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">Tipo<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="type" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">Data aquisição<ion-text color="danger">*</ion-text></ion-label>
+      <ion-datetime formControlName="acquisitionDate" ></ion-datetime> 
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">Valor aquisição<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input formControlName="acquisitionCost" type="number"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">Alocado
+      <ion-checkbox slot="end" formControlName="allocated"></ion-checkbox>
+    </ion-item>
+    <div class="controls-button">
+      <ion-button style="width:40%" color="primary"  (click)="save()">Salvar</ion-button>
+      <ion-button style="width:40%" fill="outline"  (click)="cancel()">Cancel</ion-button>
+  </div>
+  </form>
+</ion-content>

@@ -1,0 +1,74 @@
+<ion-header class="style-header">
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/work"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Diário - Registro</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button (click)="saveDaily()">
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="style-content" padding>
+<form [formGroup]="form">
+    <!-- Dados básicos -->
+    <div class="ion-padding" >
+        <ion-item class="style-item">
+            <ion-label position="floating">Descrição da obra<ion-text color="danger">*</ion-text></ion-label>
+            <ion-textarea formControlName="description" auto-grow=true ></ion-textarea>
+        </ion-item>
+        <ion-item class="style-item ion-text-center center" >
+            <ion-label position="floating">Data da visita<ion-text color="danger">*</ion-text></ion-label>
+            <ion-datetime formControlName="date" displayFormat="DD/MM/YYYY"></ion-datetime>
+        </ion-item>
+    </div>
+
+    <ion-segment (ionChange)="verifyOption($event)">
+        <ion-segment-button value="1">
+            <ion-icon size="large" name="images" (click)="addPhotos(work)"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="2">
+            <ion-icon size="large" name="construct" (click)="addEquipments(work)"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="3">
+            <ion-icon size="large" name="contacts" (click)="addWorkers(work)"></ion-icon>
+        </ion-segment-button>
+    </ion-segment>
+
+    <div class="ion-text-center" [hidden]="showAddPhotosSec || showAddEquipmentsSec || showAddWorkersSec">
+        <span>Selecione a opção desejada.</span>
+    </div>
+
+    <!-- Fotos -->
+    <div [hidden]="!showAddPhotosSec" #iptPhotos>
+        <ion-item class="style-item" >
+            <ion-textarea></ion-textarea>
+        </ion-item>
+    </div>
+
+    <!-- Equipamentos -->
+    <div [hidden]="!showAddEquipmentsSec" #iptEquipments>
+        <app-equipment  [result]="equipmentSelected" 
+                        [isCheckable]="true"
+                        [workRef]="work.id">
+
+        </app-equipment>
+    </div>
+
+    <!-- Time -->
+    <div [hidden]="!showAddWorkersSec" #iptWorkers>
+        <app-worker [result]="workerSelected" 
+                    [isCheckable]="true"
+                    [workRef]="work.id">
+
+        </app-worker>
+    </div>
+    <!-- align to the bottom of the page -->
+    <div class="controls-button" >
+        <ion-button color="primary" style="width:40%" (click)="save()" >Salvar</ion-button>
+        <ion-button fill="outline" style="width:40%" (click)="cancel()" >Cancelar</ion-button>
+    </div>
+</form>
+</ion-content>

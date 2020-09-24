@@ -1,0 +1,33 @@
+<ion-header translucent class="style-header">
+  <ion-toolbar class="style-toolbar">
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="style-content">
+  <ion-grid>
+    <ion-row *ngFor="let feature of features; index as i" (click)="goToDetailsView(feature)">
+      <ion-col>
+        <ion-card class="style-card">
+          <div class="style-div">
+            <ion-card-content>
+              <ion-card-title>
+                {{feature.title}}
+              </ion-card-title>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-img class="style-img" [src]="feature.image"></ion-img>
+                  </ion-col>
+                  <ion-col size="8" class="style-description">
+                    {{feature.description}}
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

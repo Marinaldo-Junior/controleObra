@@ -1,0 +1,36 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-title>Equipamento - Listagem</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addEquipment()">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionInput)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="style-content">
+  <ion-card padding *ngFor="let equipment of equipmentCollection" class="ItemSpace">
+    <ion-card-title>
+      {{ equipment.description }}
+    </ion-card-title>
+    <ion-card-subtitle>
+      <b>Tipo:</b> {{ equipment.type }}
+    </ion-card-subtitle>
+    <ion-card-subtitle>
+      <b>Custo:</b> {{ equipment.acquisitionCost | currency: 'BRL' }}
+    </ion-card-subtitle>
+    <ion-card-subtitle>
+      <b>Data aquisição:</b> {{ equipment.acquisitionDate | date: 'dd/MM/yyyy'}}
+    </ion-card-subtitle>
+    <ion-card-subtitle>
+      <ion-label><b>Alocado</b></ion-label>
+      <ion-checkbox style="margin-left: 10px; --size: 13px" disabled="true" [(ngModel)]="equipment.allocated"></ion-checkbox>
+    </ion-card-subtitle>
+    <ion-button color="primary" (click)="updateEquipment(equipment)">Editar</ion-button>
+    <ion-button color="danger" (click)="deleteEquipment(equipment)">Excluir</ion-button>
+  </ion-card>
+</ion-content>

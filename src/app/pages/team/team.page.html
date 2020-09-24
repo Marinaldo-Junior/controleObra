@@ -1,0 +1,39 @@
+<ion-header class="style-header">
+  <ion-toolbar class="style-toolbar">
+    <ion-title>Equipes</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="presentModal()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="style-content">
+  <h4 class="ion-margin-bottom">Lista de Equipes</h4>
+  <ion-list class="style-list">
+    <ion-item-sliding *ngFor="let team of teamCollection">
+      <ion-item (click)="showMembers(team.id)" class="style-item">
+        {{team.name}}
+      </ion-item>
+      <ion-item-options side="end">
+        <button class="button-delete" ion-button color="danger" (click)="deleteTeam(team)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+      <ng-container *ngIf="clicked">
+        <ion-list class="members">
+          <ion-item class="nameMembers" *ngFor="let members of team.members">
+            {{members.name}} - {{members.profile.description}}
+          </ion-item>
+        </ion-list>
+      </ng-container>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+

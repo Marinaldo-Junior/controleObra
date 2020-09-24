@@ -1,0 +1,32 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-title>Construtora - Lista</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/contractor" routerDirection="forward">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons> 
+  </ion-toolbar>
+
+  <ion-toolbar class="style-toolbar">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content class="style-content">
+  <ion-list padding class="style-list">
+    <ion-item-sliding *ngFor="let contractor of contractorCollection">
+      <ion-item class="style-item">
+        {{ contractor.companyName }}
+      </ion-item>
+      <ion-item-options side="end">
+        <button class="button-edit" ion-button expandable [routerLink]="['/contractor', contractor]">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button class="button-delete" ion-button expandable (click)="deleteContractor(contractor)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,39 @@
+{
+  "features": [
+    {
+      "image": "assets/img/work.png",
+      "title": "Obras",
+      "page": "/work-list",
+      "description": "Lista as obras do usuário."
+    },
+    {
+      "image": "assets/img/profile.png",
+      "title": "Perfil",
+      "page": "profile-list",
+      "description": "Lista os perfis que um trabalhador pode ter."
+    },
+    {
+      "image": "assets/img/equipment.png",
+      "title": "Equipamentos",
+      "page": "equipment-list",
+      "description": "Lista ferramentas ou máquinas disponíves ou alocadas em alguma obra."
+    },
+    {
+      "image": "assets/img/worker.png",
+      "title": "Trabalhador",
+      "slug": "worker-list",
+      "description": "Lista os trabalhadores cadastrados na aplicação."
+    },
+    {
+      "image": "assets/img/config.png",
+      "title": "Configuração",
+      "page": "home",
+      "description": "Permite realizar configurações na conta do usuário."
+    },
+    {
+      "image": "assets/img/logout.png",
+      "title": "Logout",
+      "page": "home",
+      "description": "Sai do sistema."
+    }  ]
+}

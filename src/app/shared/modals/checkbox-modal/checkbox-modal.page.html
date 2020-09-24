@@ -1,0 +1,22 @@
+<ion-header class="style-header">
+  <ion-toolbar class="style-toolbar">
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="style-content">
+  <ion-item class="style-item">
+    <ion-label position="floating">Equipe</ion-label>
+    <ion-input type="text" [(ngModel)]="team.name"></ion-input>
+  </ion-item>
+  
+  <ion-list class="style-list">
+    <ion-searchbar animated placeholder="Pesquisar" (ionChange)="search($event)"></ion-searchbar>
+    <ion-item class="style-item" *ngFor="let member of members">
+      <ion-label>{{ member.name }} - {{ member.profile.description }}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="member.isChecked" (ionChange)="teste(member)"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <ion-button class="ion-margin-top" color="light" (click)="save()" expand="block">Salvar</ion-button>
+  <ion-button class="ion-margin-top" color="light" (click)="cancel()" expand="block">Cancelar</ion-button>
+</ion-content>

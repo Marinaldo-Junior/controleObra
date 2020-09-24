@@ -1,0 +1,5 @@
+<div class="w-component" *ngFor="let equipment of equipments; let i=index">
+    <ion-checkbox *ngIf="isCheckable" slot="start" id="i" 
+                  (ionChange)="onChange(equipment, $event.target.checked)"></ion-checkbox>
+    <ion-label>{{equipment.description}} ({{equipment.type}})</ion-label>
+  </div>

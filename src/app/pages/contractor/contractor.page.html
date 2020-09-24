@@ -1,0 +1,34 @@
+<ion-header class="style-header">
+  <ion-toolbar color="primary">
+    <ion-title>{{ action }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="style-content">
+  <form padding [formGroup]="form">
+    <ion-item class="style-item" >
+      <ion-label position="floating">Nome da construtora<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" formControlName="companyName" id="companyName"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">Contato</ion-label>
+      <ion-input type="text" formControlName="contactName"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="text" formControlName="contactEmail"></ion-input>
+    </ion-item>
+
+    <ion-item class="style-item">
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input type="text" formControlName="contactPhoneNumber"></ion-input>
+    </ion-item>
+
+    <div class="controls-button">
+      <ion-button style="width:40%" (click)="save()" color="primary" >Salvar</ion-button>
+      <ion-button style="width:40%" (click)="cancel()" fill="outline">Cancelar</ion-button>
+  </div>
+  </form>
+</ion-content>
