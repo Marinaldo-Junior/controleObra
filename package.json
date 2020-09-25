@@ -33,6 +33,7 @@
     "cordova-plugin-screen-orientation": "^3.0.2",
     "cordova-res": "^0.8.1",
     "core-js": "^3.4.7",
+    "es-abstract": "^1.17.6",
     "es6-promise-plugin": "^4.2.2",
     "firebase": "^7.5.0",
     "moment": "^2.24.0",
